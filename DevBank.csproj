@@ -14,11 +14,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="Data\" CopyToOutputDirectory="Always" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Data\" />
+        <Content Include="Data\**\*">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>

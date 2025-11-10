@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
@@ -21,11 +20,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="Data\" CopyToOutputDirectory="Always" />
+        <Content Include="Data\**\*">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Data\" />
+      <ProjectReference Include="..\..\DevBank.csproj" />
     </ItemGroup>
 
 </Project>

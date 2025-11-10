@@ -11,12 +11,18 @@ public class JsonRepository : IRepository
     //defaults to file path but allows for injecting a json file for tests
     public JsonRepository(string file = "./Data/entries.json")
     {
+        if (!File.Exists(file))
+        {
+            using(var stream = File.Create(file)){ }
+        }
         _dataFilePath = file;
     }
 
     private List<Entry> ReadFromFile()
     {
-        var entries = JsonSerializer.Deserialize<List<Entry>>(File.ReadAllText(_dataFilePath));
+        var fileContent = File.ReadAllText(_dataFilePath);
+        if (string.IsNullOrWhiteSpace(fileContent)) return [];
+        var entries = JsonSerializer.Deserialize<List<Entry>>(fileContent);
         return entries ?? [];
     }
 
@@ -33,7 +39,7 @@ public class JsonRepository : IRepository
         WriteToFile(entries);
     }
 
-    public List<Entry> FindByMessagePhrase(string phrase)
+    public List<Entry> FindByMessagePhrase(string phrase, bool ignoreWhiteSpace = false)
     {
         throw new NotImplementedException();
     }
@@ -43,10 +49,10 @@ public class JsonRepository : IRepository
         throw new NotImplementedException();
     }
 
-    public List<Entry> FindAll(int? count)
+    public List<Entry> FindAll(int count = -1)
     {
         var entries = ReadFromFile();
-        if (count is null or < 0) return entries;
-        return entries.Take(count.Value).ToList();
+        if (count < 0) return entries;
+        return entries.Take(count).ToList();
     }
 }
