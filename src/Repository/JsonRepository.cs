@@ -14,38 +14,38 @@ public class JsonRepository : IRepository
         _dataFilePath = file;
     }
 
-    private List<Entry> ReadEntriesFromFile()
+    private List<Entry> ReadFromFile()
     {
         var entries = JsonSerializer.Deserialize<List<Entry>>(File.ReadAllText(_dataFilePath));
         return entries ?? [];
     }
 
-    private void WriteEntriesToFile(List<Entry> entries)
+    private void WriteToFile(List<Entry> entries)
     {
         var entriesStr = JsonSerializer.Serialize(entries);
         File.WriteAllText(_dataFilePath, entriesStr, Encoding.UTF8);
     }
     
-    public void SaveEntry(Entry entry)
+    public void Save(Entry entry)
     {
-        var entries = ReadEntriesFromFile();
+        var entries = ReadFromFile();
         entries.Add(entry);
-        WriteEntriesToFile(entries);
+        WriteToFile(entries);
     }
 
-    public List<Entry> FindEntriesByMessagePhrase(string phrase)
+    public List<Entry> FindByMessagePhrase(string phrase)
     {
         throw new NotImplementedException();
     }
 
-    public List<Entry> FindEntriesByTags(List<string> tags)
+    public List<Entry> FindByTags(List<string> tags)
     {
         throw new NotImplementedException();
     }
 
-    public List<Entry> FindAllEntries(int? count)
+    public List<Entry> FindAll(int? count)
     {
-        var entries = ReadEntriesFromFile();
+        var entries = ReadFromFile();
         if (count is null or < 0) return entries;
         return entries.Take(count.Value).ToList();
     }
