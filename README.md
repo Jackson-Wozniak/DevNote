@@ -12,6 +12,22 @@
 
 ## :computer: Installation Guide <a id="installation-guide"></a>
 
+#### Installing the DevBank CLI
+
+1. Download the release by going to the Github Release page for your platform and version:
+   - ```https://github.com/Jackson-Wozniak/DevBank/releases/tag/v1.0.0```
+2. Extract the contents of the ZIP file into a folder on your machine:
+   - Windows: ```C:\Users\user\devbank```
+   - Linux/macOS: ```~/devbank```
+3. Add DevBank to your Path. This allows you to run DevBank command from anywhere
+   - Windows:
+     - Open ```Edit the system environment variables``` from Start
+     - Click ```Environment Variables...```
+     - In User Variables, click ```Path -> Edit -> New``` and enter the release folder path
+   - Linux/macOS:
+     - Add the folder to your PATH in your shell configuration (~/.bashrc or ~.zshrc):
+     ```export PATH="$HOME/DevBank:$PATH"```
+4. Run ```DevBank -v``` and you should see the version of your installed release
 
 
 <br/> 
