@@ -33,6 +33,11 @@ public class TestRepository : IRepository
             return message.Contains(phrase);
         }).ToList();
     }
+    
+    public List<Entry> FindByMessagePhrase(List<string> phrases, bool ignoreWhiteSpace = false)
+    {
+        throw new NotImplementedException();
+    }
 
     public int DeleteAll()
     {

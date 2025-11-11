@@ -57,6 +57,17 @@ public class JsonRepository : IRepository
             return message.Contains(phrase);
         }).ToList();
     }
+    
+    public List<Entry> FindByMessagePhrase(List<string> phrases, bool ignoreWhiteSpace = false)
+    {
+        if (ignoreWhiteSpace) phrases = phrases.Select(p => p.Replace(" ", "")).ToList();
+
+        return ReadFromFile().Where(entry =>
+        {
+            var message = ignoreWhiteSpace ? entry.Message.Replace(" ", "") : entry.Message;
+            return phrases.Any(phrase => message.Contains(phrase));
+        }).ToList();
+    }
 
     public List<Entry> FindByTags(List<string> tags)
     {

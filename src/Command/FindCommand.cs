@@ -26,6 +26,18 @@ public class FindCommand : ICommand
 
     public void Execute(string[] args)
     {
-        throw new NotImplementedException();
+        var phrases = args.Skip(1).ToList();
+
+        var entries = _repository.FindByMessagePhrase(phrases, true);
+        
+        _console.WriteLine($"Found {entries.Count} entries:");
+        _console.WriteLine("");
+        foreach (var entry in entries)
+        {
+            _console.WriteLine($"\"{entry.Message}\"");
+            _console.WriteLine($"    tags: [{string.Join(", ", entry.Tags)}]");
+            _console.WriteLine($"    created on: {entry.CreatedAt:f}");
+            _console.WriteLine("");
+        }
     }
 }
