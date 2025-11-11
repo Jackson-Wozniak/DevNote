@@ -1,4 +1,5 @@
 ﻿using DevBank.Console;
+using DevBank.Exception;
 using DevBank.Repository;
 
 namespace DevBank.Command;
@@ -26,6 +27,14 @@ public class DeleteCommand : ICommand
 
     public void Execute(string[] args)
     {
-        throw new NotImplementedException();
+        if (args.Length != 2 || args[1].ToLower() != ".")
+        {
+            _console.WriteLine(ExceptionStrings.InvalidDeleteFormatException);
+            return;
+        }
+
+        var deletedCount = _repository.DeleteAll();
+        
+        _console.WriteLine($"Deleted {deletedCount} entries.");
     }
 }

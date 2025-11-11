@@ -33,9 +33,11 @@ public class JsonRepository : IRepository
         File.WriteAllText(_dataFilePath, entriesStr, Encoding.UTF8);
     }
 
-    public void DeleteAll()
+    public int DeleteAll()
     {
+        var count = ReadFromFile().Count;
         File.WriteAllText(_dataFilePath, "");
+        return count;
     }
     
     public void Save(Entry entry)

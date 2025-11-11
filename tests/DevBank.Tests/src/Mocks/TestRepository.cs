@@ -34,8 +34,10 @@ public class TestRepository : IRepository
         }).ToList();
     }
 
-    public void DeleteAll()
+    public int DeleteAll()
     {
+        var count = entries.Count;
         entries.Clear();
+        return count;
     }
 }
