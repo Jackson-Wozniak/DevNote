@@ -36,7 +36,13 @@ public class TestRepository : IRepository
     
     public List<Entry> FindByMessagePhrase(List<string> phrases, bool ignoreWhiteSpace = false)
     {
-        throw new NotImplementedException();
+        if (ignoreWhiteSpace) phrases = phrases.Select(p => p.Replace(" ", "")).ToList();
+
+        return entries.Where(entry =>
+        {
+            var message = ignoreWhiteSpace ? entry.Message.Replace(" ", "") : entry.Message;
+            return phrases.Any(phrase => message.ToLower().Contains(phrase.ToLower()));
+        }).ToList();
     }
 
     public int DeleteAll()
