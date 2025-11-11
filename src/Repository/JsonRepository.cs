@@ -49,13 +49,7 @@ public class JsonRepository : IRepository
 
     public List<Entry> FindByMessagePhrase(string phrase, bool ignoreWhiteSpace = false)
     {
-        if (ignoreWhiteSpace) phrase = phrase.Replace(" ", "");
-
-        return ReadFromFile().Where(entry =>
-        {
-            var message = ignoreWhiteSpace ? entry.Message.Replace(" ", "") : entry.Message;
-            return message.Contains(phrase);
-        }).ToList();
+        return FindByMessagePhrase([phrase], ignoreWhiteSpace);
     }
     
     public List<Entry> FindByMessagePhrase(List<string> phrases, bool ignoreWhiteSpace = false)
@@ -65,14 +59,16 @@ public class JsonRepository : IRepository
         return ReadFromFile().Where(entry =>
         {
             var message = ignoreWhiteSpace ? entry.Message.Replace(" ", "") : entry.Message;
-            return phrases.Any(phrase => message.Contains(phrase));
+            return phrases.Any(phrase => message.ToLower().Contains(phrase.ToLower()));
         }).ToList();
     }
 
     public List<Entry> FindByTags(List<string> tags)
     {
+        tags = tags.Select(t => t.ToLower()).ToList();
         var entries = ReadFromFile();
-        return entries.Where(entry => entry.Tags.Any(tags.Contains)).ToList();
+        return entries.Where(entry => entry.Tags
+            .Any(t => tags.Contains(t.ToLower()))).ToList();
     }
 
     public List<Entry> FindAll(int count = -1)
