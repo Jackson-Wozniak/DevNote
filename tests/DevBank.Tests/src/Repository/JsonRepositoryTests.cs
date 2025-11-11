@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using DevBank.Model;
+﻿using DevBank.Model;
 using DevBank.Repository;
 
 namespace DevBank.Tests.Repository;
@@ -7,7 +6,7 @@ namespace DevBank.Tests.Repository;
 public class JsonRepositoryTests
 {
     private const string EntriesFilePath = "./Data/test_entries.json";
-    private readonly JsonRepository _repository = new JsonRepository(EntriesFilePath);
+    private readonly JsonRepository _repository = new(EntriesFilePath);
     
     [Fact]
     public void Save_AppendOne_UpdatesFile()

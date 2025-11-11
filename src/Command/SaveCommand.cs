@@ -29,6 +29,12 @@ public class SaveCommand : ICommand
 
     public void Execute(string[] args)
     {
+        if (args.Length < 2 || args[1].ToLower() == "-t" || args[1].ToLower() == "--tags")
+        {
+            _console.WriteLine(ExceptionStrings.InvalidSaveFormatException);
+            return;
+        }
+        
         var message = args[1];
         
         if (args.Length > 2 && args[2].ToLower() != "-t" && args[2].ToLower() != "--tags")
@@ -42,5 +48,6 @@ public class SaveCommand : ICommand
         var entry = new Entry(message, tags, DateTime.Now);
         
         _repository.Save(entry);
+        _console.WriteLine("Entry saved successfully.");
     }
 }

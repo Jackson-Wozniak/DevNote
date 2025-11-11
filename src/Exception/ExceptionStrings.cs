@@ -17,9 +17,6 @@ public static class ExceptionStrings
         Usage: devbank save "<message>" [--tags <tag>...]
         """;
     
-    public const string InvalidMessageFormatException = 
-        "Error: Message must be enclosed in quotations.";
-    
     public const string InvalidListFormatException = 
         """
         Error: Invalid arguments for 'list'.

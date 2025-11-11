@@ -29,4 +29,8 @@
       <ProjectReference Include="..\..\DevBank.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="src\Console\" />
+    </ItemGroup>
+
 </Project>
