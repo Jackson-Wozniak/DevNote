@@ -70,3 +70,4 @@ The following features are possibilities for future updates:
 ## :calendar: Version History <a id="versions"></a>
 
 - v1.0.0 [11/11/2025] - Initial release
+- v1.0.1 [11/11/2025] - Fixed file path bug causing crashes
