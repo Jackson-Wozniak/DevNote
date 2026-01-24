@@ -1,5 +1,4 @@
 ﻿using System.CommandLine;
-using System.Reflection;
 using DevBank.Commands;
 
 namespace DevBank;
@@ -13,6 +12,7 @@ class Program
         rootCommand.Add(SaveCommand.Create());
         rootCommand.Add(ListCommand.Create());
         rootCommand.Add(FindCommand.Create());
+        rootCommand.Add(ClearCommand.Create());
 
         rootCommand.Parse(args).Invoke();
     }
