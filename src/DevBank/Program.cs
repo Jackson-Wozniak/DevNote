@@ -12,6 +12,7 @@ class Program
         
         rootCommand.Add(SaveCommand.Create());
         rootCommand.Add(ListCommand.Create());
+        rootCommand.Add(FindCommand.Create());
 
         rootCommand.Parse(args).Invoke();
     }

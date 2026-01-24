@@ -1,4 +1,5 @@
-﻿using DevBank.Console;
+﻿using System.CommandLine;
+using DevBank.Console;
 using DevBank.Repository;
 
 namespace DevBank.Commands;
@@ -14,29 +15,58 @@ public class FindCommand
         _console = console;
     }
 
-    public static FindCommand Create()
+    public static Command Create(IRepository? r = null, IConsole? c = null)
     {
-        return new FindCommand(new JsonRepository(), new SystemConsole());
+        return new FindCommand(r ?? new JsonRepository(), c ?? new SystemConsole())
+            .CreateCommand();
     }
 
-    public static FindCommand Create(IRepository r, IConsole c)
+    private Command CreateCommand()
     {
-        return new FindCommand(r, c);
-    }
+        var command = new Command("find", "Find matching entries");
 
-    public void Execute(string[] args)
-    {
-        var phrases = args.Skip(1).ToList();
-
-        var entries = _repository.FindByMessagePhrase(phrases, true);
+        var messageOption = new Option<string>("--message", "-m");
+        var tagsOption = new Option<string[]>("--tags", "-t")
+        {
+            AllowMultipleArgumentsPerToken = true
+        };
         
-        _console.WriteLine($"Found {entries.Count} entries:");
+        command.Options.Add(messageOption);
+        command.Options.Add(tagsOption);
+        
+        command.SetAction(result =>
+        {
+            string? message = result.GetValue(messageOption);
+            
+            if (string.IsNullOrEmpty(message))
+            {
+                _console.WriteLine("Error: --message is required");
+                _console.WriteLine("Usage: DevBank save --message <value> [--tags ...]");
+                return;
+            }
+            
+            var tags = result.GetValue(tagsOption) ?? [];
+            Execute(message, tags.ToList());
+        });
+
+        return command;
+    }
+
+    private void Execute(string phrase, List<string> tags)
+    {
+        var entries = _repository.FindByMessagePhrase(phrase, true)
+            .Where(_ => tags.Count == 0 || tags.Any(tags.Contains))
+            .OrderByDescending(e => e.CreatedAt)
+            .ToList();
+        
+        _console.WriteLine($"Found ({entries.Count}) matching entries:");
         _console.WriteLine("");
         foreach (var entry in entries)
         {
             _console.WriteLine($"\"{entry.Message}\"");
             _console.WriteLine($"    tags: [{string.Join(", ", entry.Tags)}]");
             _console.WriteLine($"    created on: {entry.CreatedAt:f}");
+            _console.WriteLine("");
         }
     }
 }
