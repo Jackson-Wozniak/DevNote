@@ -31,7 +31,7 @@ class Program
                     .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
                     .InformationalVersion ?? "unknown";
                 version = version.Split("+")[0];
-                System.Console.WriteLine($"DevBank version {version}");
+                System.Console.WriteLine($"DevBank v{version}");
                 break;
             default:
                 System.Console.WriteLine(ExceptionStrings.NoArgumentsException);
