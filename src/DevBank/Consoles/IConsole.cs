@@ -1,4 +1,4 @@
-﻿namespace DevBank.Console;
+﻿namespace DevBank.Consoles;
 
 public interface IConsole
 {

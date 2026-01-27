@@ -1,4 +1,4 @@
-﻿namespace DevBank.Model;
+﻿namespace DevBank.Models;
 
 public class Entry
 {

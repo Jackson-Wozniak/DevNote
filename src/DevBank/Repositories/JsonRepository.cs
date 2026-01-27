@@ -1,9 +1,9 @@
 ﻿using System.Text;
 using System.Text.Json;
 using DevBank.Helpers;
-using DevBank.Model;
+using DevBank.Models;
 
-namespace DevBank.Repository;
+namespace DevBank.Repositories;
 
 public class JsonRepository : IRepository
 {

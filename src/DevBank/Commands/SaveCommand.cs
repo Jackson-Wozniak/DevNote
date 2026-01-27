@@ -1,7 +1,7 @@
 ﻿using System.CommandLine;
-using DevBank.Console;
-using DevBank.Model;
-using DevBank.Repository;
+using DevBank.Consoles;
+using DevBank.Models;
+using DevBank.Repositories;
 
 namespace DevBank.Commands;
 
