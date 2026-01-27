@@ -50,7 +50,7 @@ public class ListCommand
         _console.WriteLine("");
         foreach (var entry in entries)
         {
-            _console.WriteLine($"\"{entry.Message}\"");
+            _console.WriteLine($"\"{entry.Content}\"");
             _console.WriteLine($"    tags: [{string.Join(", ", entry.Tags)}]");
             _console.WriteLine($"    created on: {entry.CreatedAt:f}");
             _console.WriteLine("");

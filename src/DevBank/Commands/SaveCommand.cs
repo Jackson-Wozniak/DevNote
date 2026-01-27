@@ -25,21 +25,26 @@ public class SaveCommand
     private Command CreateCommand()
     {
         var command = new Command("save", "Save a new entry");
-
-        var messageOption = new Option<string>("--message", "-m");
+        
+        var contentArg = new Argument<string>(name: "content")
+        {
+            Arity = ArgumentArity.ExactlyOne
+        };
+        
+        command.Arguments.Add(contentArg);
+        
         var tagsOption = new Option<string[]>("--tags", "-t")
         {
             AllowMultipleArgumentsPerToken = true
         };
         
-        command.Options.Add(messageOption);
         command.Options.Add(tagsOption);
         
         command.SetAction(result =>
         {
-            string? message = result.GetValue(messageOption);
+            string? content = result.GetValue(contentArg);
             
-            if (string.IsNullOrEmpty(message))
+            if (string.IsNullOrEmpty(content))
             {
                 _console.WriteLine("Error: --message is required");
                 _console.WriteLine("Usage: DevBank save --message <value> [--tags ...]");
@@ -47,7 +52,7 @@ public class SaveCommand
             }
             
             var tags = result.GetValue(tagsOption) ?? [];
-            Execute(message, tags.ToList());
+            Execute(content, tags.ToList());
         });
 
         return command;
