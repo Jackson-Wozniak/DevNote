@@ -25,25 +25,21 @@ public class FindCommand
     {
         var command = new Command("find", "Find matching entries");
 
-        var contentOption = new Option<string>("--content", "-c");
+        var contentArgument = new Argument<string>("content")
+        {
+            Arity = ArgumentArity.ZeroOrOne
+        };
         var tagsOption = new Option<string[]>("--tags", "-t")
         {
             AllowMultipleArgumentsPerToken = true
         };
         
-        command.Options.Add(contentOption);
+        command.Arguments.Add(contentArgument);
         command.Options.Add(tagsOption);
         
         command.SetAction(result =>
         {
-            string? content = result.GetValue(contentOption);
-            
-            if (string.IsNullOrEmpty(content))
-            {
-                _console.WriteLine("Error: --content is required");
-                _console.WriteLine("Usage: DevBank save --content <value> [--tags ...]");
-                return;
-            }
+            string? content = result.GetValue(contentArgument);
             
             var tags = result.GetValue(tagsOption) ?? [];
             Execute(content, tags.ToList());
@@ -52,10 +48,10 @@ public class FindCommand
         return command;
     }
 
-    private void Execute(string phrase, List<string> tags)
+    private void Execute(string? phrase, List<string> tags)
     {
         var entries = _repository.FindAll()
-            .Where(e => e.Content.Contains(phrase))
+            .Where(e => phrase == null || e.Content.Contains(phrase))
             .Where(_ => tags.Count == 0 || tags.Any(tags.Contains))
             .OrderByDescending(e => e.CreatedAt)
             .ToList();
