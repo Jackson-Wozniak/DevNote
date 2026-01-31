@@ -30,11 +30,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="src\Console\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\src\DevBank\DevBank.csproj" />
+      <ProjectReference Include="..\..\src\DevNote\DevNote.csproj" />
     </ItemGroup>
 
 </Project>

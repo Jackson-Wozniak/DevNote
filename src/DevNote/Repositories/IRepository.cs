@@ -1,6 +1,6 @@
-﻿using DevBank.Models;
+﻿using DevNote.Models;
 
-namespace DevBank.Repositories;
+namespace DevNote.Repositories;
 
 public interface IRepository
 {

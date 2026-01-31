@@ -1,17 +1,17 @@
 ﻿using System.Text;
 using System.Text.Json;
-using DevBank.Helpers;
-using DevBank.Models;
+using DevNote.Helpers;
+using DevNote.Models;
 
-namespace DevBank.Repositories;
+namespace DevNote.Repositories;
 
 public class JsonRepository : IRepository
 {
     public static JsonRepository Instance { get; } = new JsonRepository();
     private readonly string _dataFilePath = JsonRepositoryHelper.GetDataPath();
     private readonly JsonSerializerOptions _options = new() { WriteIndented = true };
-    
-    private JsonRepository(){ }
+
+    public JsonRepository(){ }
 
     private List<Entry> ReadFromFile()
     {

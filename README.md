@@ -1,8 +1,8 @@
 ﻿<p align="center">
-  <img src="https://img.shields.io/github/v/release/Jackson-Wozniak/DevBank?style=for-the-badge" alt="Version"/>
-  <img src="https://img.shields.io/github/license/Jackson-Wozniak/DevBank?style=for-the-badge" alt="License"/>
-  <img src="https://img.shields.io/github/downloads/Jackson-Wozniak/DevBank/total?style=for-the-badge" alt="Downloads"/>
-  <img src="https://img.shields.io/github/issues/Jackson-Wozniak/DevBank?style=for-the-badge" alt="Issues"/>
+  <img src="https://img.shields.io/github/v/release/Jackson-Wozniak/DevNote?style=for-the-badge" alt="Version"/>
+  <img src="https://img.shields.io/github/license/Jackson-Wozniak/DevNote?style=for-the-badge" alt="License"/>
+  <img src="https://img.shields.io/github/downloads/Jackson-Wozniak/DevNote/total?style=for-the-badge" alt="Downloads"/>
+  <img src="https://img.shields.io/github/issues/Jackson-Wozniak/DevNote?style=for-the-badge" alt="Issues"/>
 </p>
 
 
@@ -20,22 +20,22 @@
 
 ## :computer: Installation Guide <a id="installation-guide"></a>
 
-#### Installing the DevBank CLI
+#### Installing the DevNote CLI
 
 1. Download the release by going to the Github Release page for your platform and version:
-   - ```https://github.com/Jackson-Wozniak/DevBank/releases/tag/v1.0.0```
+   - ```https://github.com/Jackson-Wozniak/DevNote/releases```
 2. Extract the contents of the ZIP file into a folder on your machine:
-   - Windows: ```C:\Users\user\devbank```
-   - Linux/macOS: ```~/devbank```
-3. Add DevBank to your Path. This allows you to run DevBank command from anywhere
+   - Windows: ```C:\Users\user\DevNote```
+   - Linux/macOS: ```~/DevNote```
+3. Add DevNote to your Path. This allows you to run DevNote command from anywhere
    - Windows:
      - Open ```Edit the system environment variables``` from Start
      - Click ```Environment Variables...```
      - In User Variables, click ```Path -> Edit -> New``` and enter the release folder path
    - Linux/macOS:
      - Add the folder to your PATH in your shell configuration (~/.bashrc or ~.zshrc):
-     ```export PATH="$HOME/DevBank:$PATH"```
-4. Run ```DevBank -v``` and you should see the version of your installed release
+     ```export PATH="$HOME/DevNote:$PATH"```
+4. Run ```DevNote -v``` and you should see the version of your installed release
 
 
 <br/> 

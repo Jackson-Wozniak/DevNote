@@ -1,9 +1,9 @@
 ﻿using System.CommandLine;
-using DevBank.Consoles;
-using DevBank.Repositories;
-using DevBank.Models;
+using DevNote.Consoles;
+using DevNote.Repositories;
+using DevNote.Models;
 
-namespace DevBank.Commands;
+namespace DevNote.Commands;
 
 public class ListCommand
 {

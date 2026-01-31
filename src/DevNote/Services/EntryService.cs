@@ -1,4 +1,4 @@
-﻿namespace DevBank.Services;
+﻿namespace DevNote.Services;
 
 public class EntryService
 {

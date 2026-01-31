@@ -1,4 +1,4 @@
-﻿namespace DevBank.Models;
+﻿namespace DevNote.Models;
 
 public class Config
 {

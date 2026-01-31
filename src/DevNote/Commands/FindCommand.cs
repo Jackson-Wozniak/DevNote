@@ -1,8 +1,8 @@
 ﻿using System.CommandLine;
-using DevBank.Consoles;
-using DevBank.Repositories;
+using DevNote.Consoles;
+using DevNote.Repositories;
 
-namespace DevBank.Commands;
+namespace DevNote.Commands;
 
 public class FindCommand
 {

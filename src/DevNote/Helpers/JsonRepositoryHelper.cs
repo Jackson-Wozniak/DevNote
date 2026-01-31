@@ -1,4 +1,4 @@
-﻿namespace DevBank.Helpers;
+﻿namespace DevNote.Helpers;
 
 public static class JsonRepositoryHelper
 {
@@ -15,7 +15,7 @@ public static class JsonRepositoryHelper
 #else
         path = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-            "DevBank",
+            "DevNote",
             "Data");
 #endif
         Directory.CreateDirectory(path);

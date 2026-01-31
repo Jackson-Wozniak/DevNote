@@ -1,4 +1,4 @@
-﻿namespace DevBank.Consoles;
+﻿namespace DevNote.Consoles;
 
 public class SystemConsole : IConsole
 {

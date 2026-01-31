@@ -1,9 +1,9 @@
 ﻿using System.CommandLine;
-using DevBank.Consoles;
-using DevBank.Models;
-using DevBank.Repositories;
+using DevNote.Consoles;
+using DevNote.Models;
+using DevNote.Repositories;
 
-namespace DevBank.Commands;
+namespace DevNote.Commands;
 
 public class SaveCommand
 {
@@ -59,7 +59,7 @@ public class SaveCommand
             if (string.IsNullOrEmpty(content))
             {
                 _console.WriteLine("Error: --message is required");
-                _console.WriteLine("Usage: DevBank save --message <value> [--tags ...]");
+                _console.WriteLine("Usage: DevNote save --message <value> [--tags ...]");
                 return;
             }
             

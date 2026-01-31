@@ -1,13 +1,13 @@
 ﻿using System.CommandLine;
-using DevBank.Commands;
+using DevNote.Commands;
 
-namespace DevBank;
+namespace DevNote;
 
 class Program
 {
     public static void Main(string[] args)
     {
-        var rootCommand = new RootCommand("DevBank CLI");
+        var rootCommand = new RootCommand("DevNote CLI");
         
         rootCommand.Add(SaveCommand.Create());
         rootCommand.Add(ListCommand.Create());

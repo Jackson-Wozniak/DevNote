@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevBank", "src\DevBank\DevBank.csproj", "{C9F5FA6D-A5CB-4AC0-920B-AC2FE5187871}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevNote", "src\DevNote\DevNote.csproj", "{C9F5FA6D-A5CB-4AC0-920B-AC2FE5187871}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevBank.Tests", "tests\DevBank.Tests\DevBank.Tests.csproj", "{82CA6B4B-0AFA-4E29-B016-52CC4886EC91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevNote.Tests", "tests\DevNote.Tests\DevNote.Tests.csproj", "{82CA6B4B-0AFA-4E29-B016-52CC4886EC91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
